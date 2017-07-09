@@ -476,6 +476,13 @@ static const u8 xboxone_hori_init[] = {
 };
 
 /*
+ * This packet is required for some Power A pads to initialize.
+ */
+static const u8 xboxone_powera_init[] = {
+	0x0A, 0x20, 0x00, 0x03, 0x00, 0x01, 0x14
+};
+
+/*
  * A rumble packet is required for some PowerA pads to start
  * sending input reports. One of those pads is (0x24c6:0x543a).
  */
@@ -494,6 +501,9 @@ static const struct xboxone_init_packet xboxone_init_packets[] = {
 	XBOXONE_INIT_PKT(0x0e6f, 0x0165, xboxone_hori_init),
 	XBOXONE_INIT_PKT(0x0f0d, 0x0067, xboxone_hori_init),
 	XBOXONE_INIT_PKT(0x0000, 0x0000, xboxone_fw2015_init),
+	XBOXONE_INIT_PKT(0x24c6, 0x541a, xboxone_powera_init),
+	XBOXONE_INIT_PKT(0x24c6, 0x542a, xboxone_powera_init),
+	XBOXONE_INIT_PKT(0x24c6, 0x543a, xboxone_powera_init),
 	XBOXONE_INIT_PKT(0x24c6, 0x541a, xboxone_zerorumble_init),
 	XBOXONE_INIT_PKT(0x24c6, 0x542a, xboxone_zerorumble_init),
 	XBOXONE_INIT_PKT(0x24c6, 0x543a, xboxone_zerorumble_init),
